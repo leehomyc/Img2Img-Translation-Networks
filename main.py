@@ -222,10 +222,10 @@ class Img2Img:
                            self.prob_fake_pool_a_is_real,
                            self.prob_fake_pool_b_is_real], axis=0)
         predictions = math_ops.to_float(math_ops.greater_equal(probs, .5))
-        labels = tf.concat([tf.ones(1, 35, 35, 1),
-                            tf.ones(1, 35, 35, 1),
-                            tf.zeros(1, 35, 35, 1),
-                            tf.zeros(1, 35, 35, 1)], axis=0)
+        labels = tf.concat([tf.ones([1, 35, 35, 1]),
+                            tf.ones([1, 35, 35, 1]),
+                            tf.zeros([1, 35, 35, 1]),
+                            tf.zeros([1, 35, 35, 1])], axis=0)
         return metric_ops.streaming_accuracy(
             predictions=predictions, labels=labels)
 
