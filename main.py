@@ -10,7 +10,10 @@ import tensorflow as tf
 from tensorflow.contrib.metrics.python.ops import metric_ops
 from tensorflow.python.ops import math_ops
 
-from . import config, data_loader, losses, model
+import config
+import data_loader
+import losses
+import model
 
 slim = tf.contrib.slim
 
