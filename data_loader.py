@@ -3,7 +3,8 @@ import os
 
 import tensorflow as tf
 
-from . import config, model
+import config
+import model
 
 # -----------------------------------------------------------------------------
 

@@ -1,7 +1,7 @@
 """Code for constructing the model and get the outputs from the model."""
 import tensorflow as tf
 
-from . import layers
+import layers
 
 
 # -----------------------------------------------------------------------------
