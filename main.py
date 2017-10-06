@@ -222,9 +222,12 @@ class Img2Img:
                            self.prob_fake_pool_a_is_real,
                            self.prob_fake_pool_b_is_real], axis=0)
         predictions = math_ops.to_float(math_ops.greater_equal(probs, .5))
-
+        labels = tf.concat([tf.ones(1, 35, 35, 1),
+                            tf.ones(1, 35, 35, 1),
+                            tf.zeros(1, 35, 35, 1),
+                            tf.zeros(1, 35, 35, 1)], axis=0)
         return metric_ops.streaming_accuracy(
-            predictions=predictions, labels=tf.constant([1, 1, 0, 0]))
+            predictions=predictions, labels=labels)
 
     def save_images(self, sess, epoch):
         """It saves intermediate image results and html visualization.
