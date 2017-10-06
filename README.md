@@ -1,5 +1,5 @@
 # Unsupervised Image to Image Translation Networks
-This is the TensorFlow Implementation of the NIPS 2017 paper "Unsupervised Image to Image Translation Networks" by [Harry Yang](http://www.harryyang.org). 
+This is the TensorFlow Implementation of the NIPS 2017 paper ["Unsupervised Image to Image Translation Networks"](https://arxiv.org/abs/1703.00848) by [Harry Yang](http://www.harryyang.org). 
 
 ![network](figs/network.jpg "The network structure")
 
