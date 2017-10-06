@@ -3,7 +3,7 @@ This is the TensorFlow Implementation of the NIPS 2017 paper "Unsupervised Image
 
 ![network](figs/network.jpg "The network structure")
 
-Disclaimer: This was our own research project but it shares the same idea with the paper so we are making the code publicly available.
+**Disclaimer**: This was our own research project but it shares the same idea with the paper so we are making the code publicly available.
 
 ## Introduction
 
