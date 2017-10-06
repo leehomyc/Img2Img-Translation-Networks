@@ -1,4 +1,4 @@
 """some common paths."""
 
-# The path to your csv files.
+# The path of your csv files and saved models.
 _ROOT_DIR = '/data/img2img'
