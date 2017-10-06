@@ -33,16 +33,16 @@ python -m dataset.create_image_pair_list --first_dataset=/data/img2img/horse.csv
 
 * Use resnet model with default parameters:
 ```
-python -m Img2ImgTrans.main --split_name='horse_zebra' --cycle_lambda=15 --rec_lambda=1 --num_separate_layers_g=2 --num_separate_layers_d=5 --num_no_skip_layers=0 --lsgan_lambda_a=1 --lsgan_lambda_b=1 --network_structure='resnet'
+python -m main --split_name='horse_zebra' --cycle_lambda=15 --rec_lambda=1 --num_separate_layers_g=2 --num_separate_layers_d=5 --num_no_skip_layers=0 --lsgan_lambda_a=1 --lsgan_lambda_b=1 --network_structure='resnet'
 ```
 * Use autoencoder model with default parameters:
 ```
-python -m chameleon.main --split_name='horse_zebra' --cycle_lambda=30 --rec_lambda=10 --num_separate_layers_g=3 --num_separate_layers_d=5 --num_no_skip_layers=0 --lsgan_lambda_a=2 --lsgan_lambda_b=2
+python -m main --split_name='horse_zebra' --cycle_lambda=30 --rec_lambda=10 --num_separate_layers_g=3 --num_separate_layers_d=5 --num_no_skip_layers=0 --lsgan_lambda_a=2 --lsgan_lambda_b=2
 ```
 
 ### Restore from previous checkpoints
 ```
-python -m Img2ImgTrans.main --split_name='horse_zebra' --cycle_lambda=15 --rec_lambda=1 --num_separate_layers_g=2 --num_separate_layers_d=5 --num_no_skip_layers=0 --lsgan_lambda_a=1 --lsgan_lambda_b=1 --network_structure='resnet' --checkpoint_dir=path/to/saved/checkpoint
+python -m main --split_name='horse_zebra' --cycle_lambda=15 --rec_lambda=1 --num_separate_layers_g=2 --num_separate_layers_d=5 --num_no_skip_layers=0 --lsgan_lambda_a=1 --lsgan_lambda_b=1 --network_structure='resnet' --checkpoint_dir=path/to/saved/checkpoint
 ```
 
 ### TensorBoard Output
