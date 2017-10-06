@@ -1,6 +1,5 @@
 """Code for training unsupervised image to image translation networks."""
 from datetime import datetime
-import logging
 import os
 import random
 
@@ -11,18 +10,9 @@ import tensorflow as tf
 from tensorflow.contrib.metrics.python.ops import metric_ops
 from tensorflow.python.ops import math_ops
 
-from cli import configure_script
-
 from . import config, data_loader, losses, model
 
 slim = tf.contrib.slim
-
-
-# -----------------------------------------------------------------------------
-
-logger = logging.getLogger(__name__)
-
-# -----------------------------------------------------------------------------
 
 
 class Img2Img:
@@ -215,9 +205,6 @@ class Img2Img:
         self.d_B_trainer = optimizer.minimize(self.d_loss_B, var_list=d_b_vars)
         self.g_trainer = optimizer.minimize(self.g_loss, var_list=g_vars)
 
-        for var in self.model_vars:
-            logger.info(var.name)
-
         self.create_summaries()
 
     def create_metrics(self):
@@ -249,7 +236,7 @@ class Img2Img:
                                '.html'), 'w') as v_html:
             v_html.write("<p><font size=\"6\">From left to right: Input A, Input B, Fake B, Fake A, Cycle A, Cycle B</font></p>")  # noqa
             for i in range(0, self._num_imgs_to_save):
-                logger.info("Saving image {}/{}".format(
+                print("Saving image {}/{}".format(
                     i, self._num_imgs_to_save))
                 inputs = sess.run(self.inputs)
                 fake_A_temp, fake_B_temp, cyc_A_temp, cyc_B_temp = sess.run([
@@ -326,7 +313,7 @@ class Img2Img:
 
             # Training Loop
             for epoch in range(sess.run(self.global_step), self._max_step):
-                logger.info("In the epoch {}".format(epoch))
+                print("In the epoch {}".format(epoch))
                 saver.save(sess, os.path.join(
                     self._output_dir, "img2img"), global_step=epoch)
 
@@ -340,7 +327,7 @@ class Img2Img:
                 self.save_images(sess, epoch)
 
                 for i in range(0, self._save_every_iterations):
-                    logger.info("Processing batch {}/{}".format(
+                    print("Processing batch {}/{}".format(
                         i, self._save_every_iterations))
 
                     inputs = sess.run(self.inputs)
@@ -398,7 +385,7 @@ class Img2Img:
                                         self.fake_pool_A: fake_a_temp1,
                                         self.fake_pool_B: fake_b_temp1})
                     accuracy = sess.run(acc)
-                    logger.info(
+                    print(
                         'current discriminator accuracy: {}'.format(accuracy))
 
                     self.num_fake_inputs += 1
@@ -483,5 +470,4 @@ def main(split_name, checkpoint_dir, cycle_lambda, rec_lambda,
 
 
 if __name__ == '__main__':
-    configure_script()
     main()
